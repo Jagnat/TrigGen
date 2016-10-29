@@ -3,6 +3,8 @@
 
 #define J_PI 3.14159265359L
 
+
+// Simple utility functions
 int factorial(int x)
 {
 	if (x > 1)
@@ -21,6 +23,7 @@ double power(double e, int r)
 	return p;
 }
 
+// Approximates the sine function using the taylor series
 double j_sin(double i)
 {
 	// Scale value to range 0 - 2pi
@@ -30,7 +33,9 @@ double j_sin(double i)
 	else
 		scaled = i;
 
-	// Pre-process value
+	// translates input to sample the taylor series near 0
+	// for better accuracy, and then post-reflect across
+	// the x-axis if necessary
 	int multiplier = 1;
 	if (scaled > J_PI)
 	{
@@ -47,7 +52,13 @@ double j_sin(double i)
 	// iterate
 	double sum = 0;
 
+	// Higher for a more accurate approximation
 	int max_iterations = 6;
+
+	// Used to switch between adding and subtracting
+	// functions in the taylor series
+	// More info: https://en.wikipedia.org/wiki/Taylor_series#Approximation
+
 	int polarity = 1;
 	int degree = 1;
 
@@ -62,8 +73,11 @@ double j_sin(double i)
 		degree += 2;
 	}
 
+	// Reflect output across x-axis if necessary
 	return sum * multiplier;
 }
+
+// All other trigonometric functions can be calculated by transforming sine
 
 double j_cos(double i)
 {

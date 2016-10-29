@@ -1,4 +1,8 @@
-/* GIMP RGB C-Source image dump (texture.c) */
+// This is a texture image dump from GIMP,
+// Which allows me to embed the image file in
+// the executable as static memory.
+// The exe is also linked statically and will run
+// in any folder.
 
 static const struct {
   unsigned int 	 width;

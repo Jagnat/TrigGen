@@ -11,6 +11,11 @@
 
 #include "texture.c"
 
+// This code is very primitive - 
+// I wrote this code as fast as possible,
+// it does the bare minimum to get an opengl window
+// on the screen and render some textures and dots
+
 SDL_Window *window;
 SDL_GLContext context;
 
